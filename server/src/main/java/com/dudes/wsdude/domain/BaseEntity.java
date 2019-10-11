@@ -1,4 +1,4 @@
-package domain;
+package com.dudes.wsdude.domain;
 
 import java.io.Serializable;
 

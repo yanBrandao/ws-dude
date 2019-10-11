@@ -1,4 +1,4 @@
-package dto;
+package com.dudes.wsdude.dto;
 
 import java.time.LocalDateTime;
 import lombok.*;
@@ -8,11 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DudeDTO extends BaseDTO {
-    public Long id;
-    public String name;
-    public String lastName;
-    public LocalDateTime bornDate;
-    public String CPF;
+    private Long id;
+    private String name;
+    private String lastName;
+    private LocalDateTime bornDate;
+    private String CPF;
 
     public DudeDTO(Long id){
         this.id = id;

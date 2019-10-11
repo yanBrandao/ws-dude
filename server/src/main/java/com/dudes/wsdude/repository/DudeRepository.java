@@ -1,4 +1,11 @@
 package com.dudes.wsdude.repository;
 
-public interface DudeRepository {
+import com.dudes.wsdude.domain.Dude;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DudeRepository extends JpaRepository<Dude, Long> {
+
+    Dude findFirstByCPF(String cpf);
 }

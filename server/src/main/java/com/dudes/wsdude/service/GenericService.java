@@ -1,6 +1,6 @@
-package service;
+package com.dudes.wsdude.service;
 
-import domain.BaseEntity;
+import com.dudes.wsdude.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,4 +18,15 @@ public interface GenericService<T extends BaseEntity<I>, I> {
     T add(T entity);
 
     T update(T entity);
+
+    void validateId(T entity, boolean isUpdate);
+
+    boolean exists(I id);
+
+    void trim(T entity);
+
+    void remove(T entity);
+
+    void removeById(I id);
+
 }

@@ -1,15 +1,18 @@
-package service.impl;
+package com.dudes.wsdude.service.impl;
 
-import domain.BaseEntity;
-import exception.InvalidEntityException;
+import com.dudes.wsdude.domain.BaseEntity;
+import com.dudes.wsdude.exception.InvalidEntityException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import service.GenericService;
-import utils.ValidateUtils;
+import com.dudes.wsdude.service.GenericService;
+import com.dudes.wsdude.utils.ValidateUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +21,7 @@ import javax.validation.ConstraintViolationException;
 import java.io.Serializable;
 import java.util.List;
 
+@Service
 public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Serializable> implements GenericService<T, I> {
     private static final String APP_NOT_FOUND = "dude.notFound";
     private static final String ID_MUST_BE_FILLED_MESSAGE = "dude.id.mustBeFilled";
@@ -59,12 +63,73 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
         T entity = repository.findById(id).orElse(null);
         ValidateUtils.checkFound(entity, getNotFoundMessage());
         return entity;
+    }
 
+    @Transactional
+    @Override
+    public T add(T entity) {
+        trim(entity);
+        validateId(entity, false);
+        entity.setId(null);
+        return this.saveOrUpdate(entity);
+    }
+
+    @Transactional
+    @Override
+    public T update(T entity) {
+        trim(entity);
+        validateId(entity, true);
+        return this.saveOrUpdate(entity);
+    }
+
+    @Override
+    public boolean exists(I id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public void validateId(T entity, boolean isUpdate) {
+        if (isUpdate) {
+            ValidateUtils.checkBiggerThanZero((Long) entity.getId(), getIdMustBeFilledMessage());
+        } else {
+            ValidateUtils.checkMustBeNullOrZero((Long) entity.getId(), getIdCannotBeFilledMessage());
+        }
+    }
+
+    @Override
+    public void remove(T entity) {
+        try {
+            repository.delete(entity);
+        } catch (ConstraintViolationException | DataIntegrityViolationException | UnexpectedRollbackException e) {
+            throw new InvalidEntityException(getConstraintViolationExceptionOnDeleteMessage());
+        }
+    }
+
+    @Override
+    public void removeById(I id) {
+        try {
+            repository.deleteById(id);
+        } catch (ConstraintViolationException | DataIntegrityViolationException | UnexpectedRollbackException e) {
+            throw new InvalidEntityException(getConstraintViolationExceptionOnDeleteMessage());
+        }
     }
 
 
+
+    protected String getIdMustBeFilledMessage() {
+        return ID_MUST_BE_FILLED_MESSAGE;
+    }
+
+    protected String getIdCannotBeFilledMessage() {
+        return ID_CANNOT_BE_FILLED_MESSAGE;
+    }
+
     protected String getNotFoundMessage() {
         return APP_NOT_FOUND;
+    }
+
+    protected String getConstraintViolationExceptionOnDeleteMessage() {
+        return ID_CONSTRAINT_VIOLATION_ON_DELETE_MESSAGE;
     }
 
 }

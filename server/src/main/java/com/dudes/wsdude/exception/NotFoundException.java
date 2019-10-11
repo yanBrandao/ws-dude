@@ -1,4 +1,4 @@
-package exception;
+package com.dudes.wsdude.exception;
 
 public final class NotFoundException extends DudeException {
     private static final long serialVersionUID = 1L;

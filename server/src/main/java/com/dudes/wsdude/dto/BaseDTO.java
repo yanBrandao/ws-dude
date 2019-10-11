@@ -1,4 +1,4 @@
-package dto;
+package com.dudes.wsdude.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
