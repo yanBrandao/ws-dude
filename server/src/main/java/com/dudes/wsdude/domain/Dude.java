@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -28,11 +29,16 @@ public class Dude implements BaseEntity<Long> {
 
     @NotNull
     @Column(name="DUD_BORN_DATE")
-    private LocalDateTime bornDate;
+    private LocalDate bornDate;
 
     @NotNull
     @Column(name="DUD_CPF", unique = true, nullable = false)
     private String CPF;
+
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "DUD_GENDER")
+    private Gender gender;
 
     public Dude(Long id){
         this.id = id;
