@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.dudes</groupId>
 	<artifactId>ws-dude</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>ws-dude</name>
 	<description>Is a backend for crud dudes</description>
 
@@ -56,6 +56,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
