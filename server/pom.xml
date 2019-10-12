@@ -16,6 +16,10 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<DB.USERNAME>postgres</DB.USERNAME>
+		<DB.PASSWORD>Yan12345</DB.PASSWORD>
+		<DB.DATABASE>postgres</DB.DATABASE>
+		<DB.HOST>localhost</DB.HOST>
 	</properties>
 
 	<dependencies>
