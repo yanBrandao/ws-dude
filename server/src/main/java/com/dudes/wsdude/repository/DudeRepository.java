@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DudeRepository extends JpaRepository<Dude, Long> {
 
-    Dude findFirstByCPF(String cpf);
+    public Dude findFirstByCPF(String cpf);
 }

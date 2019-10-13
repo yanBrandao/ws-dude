@@ -12,6 +12,11 @@ public class DudeMapper implements GenericMapper<Dude, DudeDTO> {
         entity.setCPF(dto.getCPF());
         entity.setLastName(dto.getLastName());
         entity.setBornDate(dto.getBornDate());
+        if(dto.getGender() != null)
+            entity.setGender(new GenderMapper().convertToEntity(dto.getGender()));
+
+        if(dto.getAddress() != null)
+            entity.setAddress(new AddressMapper().convertToEntity(dto.getAddress()));
 
         return entity;
     }
@@ -23,6 +28,11 @@ public class DudeMapper implements GenericMapper<Dude, DudeDTO> {
         dto.setCPF(entity.getCPF());
         dto.setLastName(entity.getLastName());
         dto.setBornDate(entity.getBornDate());
+        if(entity.getGender() != null)
+            dto.setGender(new GenderMapper().convertToDTO(entity.getGender()));
+
+        if(entity.getAddress() != null)
+            dto.setAddress(new AddressMapper().convertToDTO(entity.getAddress()));
 
         return dto;
     }

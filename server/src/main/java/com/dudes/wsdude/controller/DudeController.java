@@ -7,8 +7,10 @@ import com.dudes.wsdude.service.DudeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,21 +19,22 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/dudes")
 public class DudeController implements GenericController<Dude, Long, DudeDTO> {
-    private final DudeService service;
+    @Autowired
+    DudeService service;
+
     DudeMapper mapper;
 
-    public DudeController(DudeService service){
-        this.service = service;
-    }
-
     DudeMapper getMapper(){
-        return mapper == null ? new DudeMapper() : mapper;
+        if(mapper == null)
+            mapper = new DudeMapper();
+        return mapper;
     }
 
     @GetMapping
     @ApiOperation(value = "List all Dudes paginated")
     public Page<DudeDTO> findAllPaginated(Pageable page){
-        return getMapper().convertToPageDTO(service.getAllPaginated(page));
+        Page<Dude> pageAll = service.getAllPaginated(page);
+        return getMapper().convertToPageDTO(pageAll);
     }
 
     @GetMapping(value = "/{id}")
@@ -53,7 +56,7 @@ public class DudeController implements GenericController<Dude, Long, DudeDTO> {
     public DudeDTO update(@ApiParam(value = "id", required = true) @PathVariable Long id,
                           @ApiParam(value = "dude", required = true) @RequestBody @Valid DudeDTO dudeDTO) {
         Dude dude = getMapper().convertToEntity(dudeDTO);
-        return getMapper().convertToDTO(service.update(dude));
+        return getMapper().convertToDTO(service.update(id, dude));
     }
 
     @DeleteMapping(value = "/{id}")

@@ -76,8 +76,9 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
 
     @Transactional
     @Override
-    public T update(T entity) {
+    public T update(I id, T entity) {
         trim(entity);
+        validateId(id, entity);
         validateId(entity, true);
         return this.saveOrUpdate(entity);
     }
@@ -114,7 +115,10 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
         }
     }
 
-
+    void validateId(I id, T entity){
+        if(entity.getId() != id)
+            throw new InvalidEntityException(getIdCannotBeFilledMessage());
+    }
 
     protected String getIdMustBeFilledMessage() {
         return ID_MUST_BE_FILLED_MESSAGE;
