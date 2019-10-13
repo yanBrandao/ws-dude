@@ -10,11 +10,3 @@ I'ts a backend to crud dudes!
 
 ## Class diagram
 ![ClassDiagram](./docs/class-diagram.png)
-
-## BDD 
-
-***Cenário:*** Cadastrar pessoas e seu respectivo endereço.
-***Dado*** que eu tenho uma pessoa para se cadastrar em meu sistema
-***E*** Cidades e Estados cadastrados
-***Quando*** cadastrar a pessoa, devo apenas inserir o endereço com rua, bairro e apontar cidade e estado
-***Então*** eu deveria ter uma lista com todas as pessoas cadastradas
