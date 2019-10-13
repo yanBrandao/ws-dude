@@ -1,4 +1,4 @@
-package com.dudes.wsdude.integration_test;
+package com.dudes.wsdude.test.controllers;
 
 import com.dudes.wsdude.WsDudeApplication;
 import com.dudes.wsdude.WsDudeApplicationTests;
