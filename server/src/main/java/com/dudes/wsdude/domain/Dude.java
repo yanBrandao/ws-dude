@@ -1,11 +1,13 @@
 package com.dudes.wsdude.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -29,7 +31,8 @@ public class Dude implements BaseEntity<Long> {
 
     @NotNull
     @Column(name="DUD_BORN_DATE")
-    private LocalDate bornDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date bornDate;
 
     @NotNull
     @Column(name="DUD_CPF", unique = true, nullable = false)
