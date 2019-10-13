@@ -1,4 +1,12 @@
 language: java
 
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+
 script:
   cd server && mvn test -B -DDB.USERNAME=dlvlbqce -DDB.DATABASE=dlvlbqce -DDB.PASSWORD=MEAp8VZvgdPmNwiSwpF0OJFx4mk0eptm -DDB.HOST=salt.db.elephantsql.com
+
+after_success:
+  - mvn clean test jacoco:report coveralls:report

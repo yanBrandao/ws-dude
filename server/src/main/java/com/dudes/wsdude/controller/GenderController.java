@@ -56,7 +56,7 @@ public class GenderController implements GenericController<Gender, Long, GenderD
     public GenderDTO update(@ApiParam(value = "id", required = true) @PathVariable Long id,
                             @ApiParam(value = "gender", required = true) @RequestBody @Valid GenderDTO dto) {
         Gender gender = getMapper().convertToEntity(dto);
-        return getMapper().convertToDTO(service.update(gender));
+        return getMapper().convertToDTO(service.update(id, gender));
     }
 
     @Override

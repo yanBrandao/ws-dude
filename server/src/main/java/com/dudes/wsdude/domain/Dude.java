@@ -37,8 +37,13 @@ public class Dude implements BaseEntity<Long> {
 
     @NotNull
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "DUD_GENDER")
+    @JoinColumn(name = "DUD_GEN_ID")
     private Gender gender;
+
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "DUD_ADD_ID")
+    private Address address;
 
     public Dude(Long id){
         this.id = id;

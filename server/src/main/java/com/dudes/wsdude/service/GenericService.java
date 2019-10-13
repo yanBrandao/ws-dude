@@ -17,7 +17,7 @@ public interface GenericService<T extends BaseEntity<I>, I> {
 
     T add(T entity);
 
-    T update(T entity);
+    T update(I id, T entity);
 
     void validateId(T entity, boolean isUpdate);
 
