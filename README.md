@@ -9,4 +9,4 @@
 I'ts a backend to crud dudes!
 
 ## Class diagram
-![ClassDiagram](./docs/class-diagram.png)
+![ClassDiagram](./docs/class-diagram.PNG)
