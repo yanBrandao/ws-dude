@@ -2,11 +2,13 @@ package com.dudes.wsdude.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import com.dudes.wsdude.domain.Address;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -16,13 +18,13 @@ public class DudeDTO extends BaseDTO {
     private Long id;
     private String name;
     private String lastName;
-    private LocalDate bornDate;
+    private Date bornDate;
     private String CPF;
 
-    @NotBlank(message = "Gender is required")
+    @NotNull(message = "Gender is required")
     private GenderDTO gender;
 
-    @NotBlank(message = "Address is required")
+    @NotNull(message = "Address is required")
     private AddressDTO address;
 
     public DudeDTO(Long id){
