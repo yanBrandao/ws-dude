@@ -11,11 +11,5 @@ cache:
 script:
   cd server && mvn test -B -DDB.USERNAME=dlvlbqce -DDB.DATABASE=dlvlbqce -DDB.PASSWORD=MEAp8VZvgdPmNwiSwpF0OJFx4mk0eptm -DDB.HOST=salt.db.elephantsql.com
 
-addons:
-  sonarcloud:
-    organization: "yanbrandao"
-    token:
-      secure: "U4kC9THfC4sIPLD59vYDMyMRYwfoleo3ndT9XbqxXbPX14JtSW2GBRfgLIRUK6VoLUVzG3yTsJAH456jHd403r9rf+spsbkYe2T6xG60kVoWXaw1wbV2yncw0/I/E7kgNunjbZlQYuI3I/7/j5pjLQ3qd7CEWV2yRAeXR/NQGkkHldnit9NyU6VpbPnP6Aw1p79xFk2YQCbsNIdDovUgqp9w1b/Ll+0H4GigHQl1KFNr4Q/2Hmyx0l9o7xxKSfszWzRAzI2spBQFQXvztyRntxS50etiNHkOQ1AWuFzQ7qQKus7DdGTAp6lpLynkN7xnTzDKtOZ51/OSCYkvMFGf5zEWrV+uQ1l5P2vdRpQFiNqIpaAMqziqfrMu+U3GGb1u6axHowitL5d1/gzSbNz1Ebr4KU6UtmOirE3YjW+Fnw0QIJSwbUJzGOQXIgEXpFvcvOzYFeu8e1KMW9lY2zoxDeaKRUY/C1lJCPhTCVyiqoB3HYqUNjiMnXFUCNxa1JL7F2VFLvu4lVd4fGXkBznqnG9HPR7DSS8CdkHAQKpsz/TyLOoUvjYaepGabK1ln5dpZ5oA9MOx0hQtFePPvqdpffBvOnb5fDek9EHL23TRO8AdMi56f3jQ2wT51/OQHdttKHCD9EkbjBrcRKkjyitOsrp5OcgycSqt6wd079LsqDg="
-
 after_success:
-  - mvn clean test jacoco:report coveralls:report org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=yanBrandao_ws-dude
+  - mvn clean test jacoco:report coveralls:report
