@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(value = "Dude Controller1")
+@Api(value = "Dude Controller")
 @RestController
 @RequestMapping(value = "/dudes")
 public class DudeController implements GenericController<Dude, Long, DudeDTO> {

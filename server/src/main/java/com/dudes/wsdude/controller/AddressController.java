@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Api(value = "Address Controller")
 @RestController
-@RequestMapping(value = "/address")
+@RequestMapping(value = "/addresses")
 public class AddressController implements GenericController<Address, Long, AddressDTO> {
     private final AddressService service;
     private AddressMapper mapper = null;
