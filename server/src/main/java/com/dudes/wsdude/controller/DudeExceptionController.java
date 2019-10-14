@@ -15,8 +15,11 @@ import java.util.Map;
 
 @Controller
 public class DudeExceptionController implements ErrorController {
-    @Autowired
-    private ErrorAttributes errorAttributes;
+    private final ErrorAttributes errorAttributes;
+
+    public DudeExceptionController(ErrorAttributes errorAttributes) {
+        this.errorAttributes = errorAttributes;
+    }
 
     @RequestMapping(value = "error")
     @ResponseBody

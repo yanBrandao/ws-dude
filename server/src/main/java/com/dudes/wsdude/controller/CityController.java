@@ -23,7 +23,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/cities")
 public class CityController implements GenericController<City, Long, CityDTO> {
     private final CityService service;
-    private CityMapper mapper = null;
+    private final CityMapper mapper = null;
 
     public CityController(CityService service){
         this.service = service;

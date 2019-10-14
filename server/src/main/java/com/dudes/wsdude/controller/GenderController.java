@@ -18,13 +18,13 @@ import javax.validation.Valid;
 @RequestMapping(value = "/genders")
 public class GenderController implements GenericController<Gender, Long, GenderDTO> {
     private final GenderService service;
-    GenderMapper mapper;
+    private GenderMapper mapper;
 
     public GenderController(GenderService service){
         this.service = service;
     }
 
-    GenderMapper getMapper(){
+    private GenderMapper getMapper(){
         return mapper == null ? new GenderMapper() : mapper;
     }
 

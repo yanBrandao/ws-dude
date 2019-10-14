@@ -19,7 +19,7 @@ public class ValidateUtilsTest {
         ValidateUtils validateUtils = new ValidateUtils();
 
         assertThatThrownBy(() -> {
-            validateUtils.checkFound(null, "dude.notFound");
+            ValidateUtils.checkFound(null, "dude.notFound");
         })
                 .isInstanceOf(NotFoundException.class)
                 .hasMessage("dude.notFound");
@@ -30,7 +30,7 @@ public class ValidateUtilsTest {
         ValidateUtils validateUtils = new ValidateUtils();
 
         assertThatThrownBy(() -> {
-            validateUtils.checkBiggerThanZero(-1, "dude.id.mustBeFilled");
+            ValidateUtils.checkBiggerThanZero(-1, "dude.id.mustBeFilled");
         })
                 .isInstanceOf(InvalidValueException.class)
                 .hasMessage("dude.id.mustBeFilled");
@@ -41,7 +41,7 @@ public class ValidateUtilsTest {
         ValidateUtils validateUtils = new ValidateUtils();
 
         assertThatThrownBy(() -> {
-            validateUtils.checkMustBeNullOrZero(20L, "Value must be null or Zero");
+            ValidateUtils.checkMustBeNullOrZero(20L, "Value must be null or Zero");
         })
                 .isInstanceOf(InvalidValueException.class)
                 .hasMessage("Value must be null or Zero");

@@ -94,24 +94,24 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
         }
     }
 
-    void validateId(I id, T entity){
+    private void validateId(I id, T entity){
         if(entity.getId() != id)
             throw new InvalidEntityException(getIdCannotBeFilledMessage());
     }
 
-    protected String getIdMustBeFilledMessage() {
+    private String getIdMustBeFilledMessage() {
         return ID_MUST_BE_FILLED_MESSAGE;
     }
 
-    protected String getIdCannotBeFilledMessage() {
+    private String getIdCannotBeFilledMessage() {
         return ID_CANNOT_BE_FILLED_MESSAGE;
     }
 
-    protected String getNotFoundMessage() {
+    private String getNotFoundMessage() {
         return APP_NOT_FOUND;
     }
 
-    protected String getConstraintViolationExceptionOnDeleteMessage() {
+    private String getConstraintViolationExceptionOnDeleteMessage() {
         return ID_CONSTRAINT_VIOLATION_ON_DELETE_MESSAGE;
     }
 
