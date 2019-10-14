@@ -47,13 +47,6 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
     }
 
     @Override
-    public List<T> getAll() {
-        List<T> entities = repository.findAll();
-        ValidateUtils.checkFound(entities, getNotFoundMessage());
-        return entities;
-    }
-
-    @Override
     public Page<T> getAllPaginated(Pageable pageable) {
         return repository.findAll(pageable);
     }
@@ -84,25 +77,11 @@ public abstract class GenericServiceImpl<T extends BaseEntity<I>, I extends Seri
     }
 
     @Override
-    public boolean exists(I id) {
-        return repository.existsById(id);
-    }
-
-    @Override
     public void validateId(T entity, boolean isUpdate) {
         if (isUpdate) {
             ValidateUtils.checkBiggerThanZero((Long) entity.getId(), getIdMustBeFilledMessage());
         } else {
             ValidateUtils.checkMustBeNullOrZero((Long) entity.getId(), getIdCannotBeFilledMessage());
-        }
-    }
-
-    @Override
-    public void remove(T entity) {
-        try {
-            repository.delete(entity);
-        } catch (ConstraintViolationException | DataIntegrityViolationException | UnexpectedRollbackException e) {
-            throw new InvalidEntityException(getConstraintViolationExceptionOnDeleteMessage());
         }
     }
 
