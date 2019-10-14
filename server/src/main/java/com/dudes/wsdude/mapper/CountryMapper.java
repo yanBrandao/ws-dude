@@ -15,13 +15,12 @@ public class CountryMapper implements GenericMapper<Country, CountryDTO> {
     }
 
     public CountryDTO convertToDTO(Country entity){
-        CountryDTO dto = CountryDTO.builder()
+
+        return CountryDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .initials(entity.getInitials())
                 .build();
-
-        return dto;
     }
 
     public Page<CountryDTO> convertToPageDTO(Page<Country> countryPage){

@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/addresses")
 public class AddressController implements GenericController<Address, Long, AddressDTO> {
     private final AddressService service;
-    private AddressMapper mapper = null;
+    private final AddressMapper mapper = null;
 
     public AddressController(AddressService service){
         this.service = service;

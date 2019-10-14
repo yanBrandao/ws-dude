@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/countries")
 public class CountryController implements GenericController<Country, Long, CountryDTO> {
     private final CountryService service;
-    private CountryMapper mapper = null;
+    private final CountryMapper mapper = null;
 
     public CountryController(CountryService service){
         this.service = service;

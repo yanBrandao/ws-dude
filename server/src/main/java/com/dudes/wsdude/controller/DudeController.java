@@ -18,12 +18,16 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/dudes")
 public class DudeController implements GenericController<Dude, Long, DudeDTO> {
-    @Autowired
+    final
     DudeService service;
 
-    DudeMapper mapper;
+    private DudeMapper mapper;
 
-    DudeMapper getMapper(){
+    public DudeController(DudeService service) {
+        this.service = service;
+    }
+
+    private DudeMapper getMapper(){
         if(mapper == null)
             mapper = new DudeMapper();
         return mapper;
