@@ -42,6 +42,12 @@ public class DudeController implements GenericController<Dude, Long, DudeDTO> {
         return getMapper().convertToDTO(service.get(id));
     }
 
+    @GetMapping(value = "/cpf/{cpf}")
+    @ApiOperation(value = "Get dude by cpf")
+    public DudeDTO getByCPF(@ApiParam(value = "cpf", required = true) @PathVariable String cpf) {
+        return getMapper().convertToDTO(service.findByCPF(cpf));
+    }
+
     @PostMapping
     @ApiOperation(value = "Create new dude")
     public DudeDTO create(@ApiParam(value = "dude", required = true) @RequestBody @Valid DudeDTO dudeDTO) {

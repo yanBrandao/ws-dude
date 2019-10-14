@@ -92,6 +92,23 @@ public class DudeControllerTest {
     }
 
     @Test
+    public void getDudeByCPF() throws Exception {
+        Gender gender = new Gender(1L, "Male");
+        Address address = new Address(1L, "Rua Araxá", "251", "Flores", new City(1L));
+        Dude dude = new Dude(1L, "Yan", "Tapajós", new Date(LocalDate.of(1992, 07, 25).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli()) , "001234", gender, address);
+
+        when(service.findByCPF(Mockito.any())).thenReturn(dude);
+
+        String dudeJSON = new ObjectMapper().writeValueAsString(dude);
+
+        mvc.perform(get("/dudes/cpf/" + dude.getCPF())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(dudeJSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$['id']", is(1)));
+    }
+
+    @Test
     public void removeDude() throws Exception {
         Gender gender = new Gender(1L, "Male");
         Address address = new Address(1L, "Rua Araxá", "251", "Flores", new City(1L));
