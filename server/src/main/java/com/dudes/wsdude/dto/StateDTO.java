@@ -13,8 +13,4 @@ public class StateDTO {
     private String name;
     private String initials;
     private CountryDTO country;
-
-    public StateDTO(Long id){
-        this.id = id;
-    }
 }

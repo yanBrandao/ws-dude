@@ -12,8 +12,4 @@ import lombok.Setter;
 public class GenderDTO {
     private Long id;
     private String name;
-
-    public GenderDTO(Long id){
-        this.id = id;
-    }
 }

@@ -7,9 +7,4 @@ public class DudeException extends RuntimeException{
         super(message);
         this.args = args;
     }
-
-    public DudeException(String message, Throwable cause, String... args){
-        super(message, cause);
-        this.args = args;
-    }
 }

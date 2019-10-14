@@ -1,20 +1,16 @@
 package com.dudes.wsdude.dto;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
-import com.dudes.wsdude.domain.Address;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DudeDTO extends BaseDTO {
+public class DudeDTO {
     private Long id;
     private String name;
     private String lastName;
@@ -26,8 +22,4 @@ public class DudeDTO extends BaseDTO {
 
     @NotNull(message = "Address is required")
     private AddressDTO address;
-
-    public DudeDTO(Long id){
-        this.id = id;
-    }
 }

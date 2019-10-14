@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 public class DudeServiceImpl extends GenericServiceImpl<Dude, Long> implements DudeService {
 
     @Autowired
-    private DudeRepository repository;
+    private DudeRepository dudeRepository;
 
     @Override
     public Dude findByCPF(String cpf){
-        return repository.findFirstByCPF(cpf);
+        return dudeRepository.findFirstByCPF(cpf);
     }
 
     @Override
