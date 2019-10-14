@@ -1,0 +1,550 @@
+{
+	"variables": [],
+	"info": {
+		"name": "WsDudeCollection",
+		"_postman_id": "376dc93b-01a6-8c8c-2267-0cf9f2de9057",
+		"description": "This collection has all request that can be used in WsDude",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dude",
+			"description": "Main class in project",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/dudes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/dudes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"id\": 0,\n            \"name\": \"Yan\",\n            \"lastName\": \"Tapajós\",\n            \"bornDate\": \"2019-10-11T04:00:00.000+0000\",\n            \"gender\": {\n            \t\"id\": 1\n            },\n            \"address\": {\n            \t\"id\": 1\n            },\n            \"cpf\": \"2311\"\n        }"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetDudeByCPF",
+					"request": {
+						"url": "http://localhost:9001/api/dudes/cpf/01365201201",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/dudes/9",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/dudes/9",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 9,\n    \"name\": \"Yan\",\n    \"lastName\": \"Tapajós\",\n    \"bornDate\": \"2019-10-11T04:00:00.000+0000\",\n    \"gender\": {\n        \"id\": 1,\n        \"name\": \"Masculino\"\n    },\n    \"address\": {\n        \"id\": 1,\n        \"street\": \"64\",\n        \"neighborhood\": \"New City\",\n        \"number\": \"12\",\n        \"city\": {\n            \"id\": 1,\n            \"name\": \"Manaus\",\n            \"state\": {\n                \"id\": 1,\n                \"name\": \"Amazon\",\n                \"initials\": \"AM\",\n                \"country\": {\n                    \"id\": 1,\n                    \"name\": \"Zodiac\",\n                    \"initials\": \"ZZ\"\n                }\n            }\n        }\n    },\n    \"cpf\": \"231221\"\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/dudes/9",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gender",
+			"description": "Is dude gender",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/genders",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/genders",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Gente\"\r\n}"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/genders/6",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/genders/6",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 6,\r\n  \"name\": \"Gentes\"\r\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/genders/6",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"description": "Complete address from Dude",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/addresses",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/addresses",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"id\": 0,\n            \"street\": \"Rua Araxá\",\n            \"neighborhood\": \"Flores\",\n            \"number\": \"251\",\n            \"city\": {\n                \"id\": 1,\n                \"name\": \"Manaus\",\n                \"state\": {\n                    \"id\": 1,\n                    \"name\": \"Amazon\",\n                    \"initials\": \"AM\",\n                    \"country\": {\n                        \"id\": 1,\n                        \"name\": \"Zodiac\",\n                        \"initials\": \"ZZ\"\n                    }\n                }\n            }\n        }"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/addresses/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/addresses/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"street\": \"64\",\n    \"neighborhood\": \"New City\",\n    \"number\": \"12\",\n    \"city\": {\n        \"id\": 1,\n        \"name\": \"Manaus\",\n        \"state\": {\n            \"id\": 1,\n            \"name\": \"Amazon\",\n            \"initials\": \"AM\",\n            \"country\": {\n                \"id\": 1,\n                \"name\": \"Zodiac\",\n                \"initials\": \"ZZ\"\n            }\n        }\n    }\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/addresses/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "State",
+			"description": "State Controller",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/states",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/states",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"id\": 0,\n            \"name\": \"Amazing\",\n            \"initials\": \"AxazzzzZ\",\n            \"country\": {\n            \t\"id\": 1\n            }\n        }"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/states/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/states/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Amazon\",\n    \"initials\": \"AM\",\n    \"country\": {\n        \"id\": 1,\n        \"name\": \"Zodiac\",\n        \"initials\": \"ZZ\"\n    }\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/states/7",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Country",
+			"description": "Country Controller",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/countries",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/countries",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"initials\": \"AF\",\r\n  \"name\": \"Africa\"\r\n}"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/countries/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/countries/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"initials\": \"ZZ\",\r\n  \"name\": \"Zodiac\"\r\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/countries/4",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"description": "City Controller",
+			"item": [
+				{
+					"name": "GetAllPaginated",
+					"request": {
+						"url": "http://localhost:9001/api/cities",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 0,\n\t\"name\": \"United Kingdom\",\n\t\"initials\": \"UK\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:9001/api/cities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"initials\": \"AF\",\r\n  \"name\": \"Africa\"\r\n}"
+						},
+						"description": "Create country"
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"url": "http://localhost:9001/api/cities/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get CountryBy ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:9001/api/cities/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"initials\": \"ZZ\",\r\n  \"name\": \"Zodiac\"\r\n}"
+						},
+						"description": "Update a Country"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"url": "http://localhost:9001/api/cities/4",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Remove Country by pathVariable Id"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
