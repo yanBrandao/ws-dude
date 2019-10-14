@@ -7,8 +7,4 @@ public class InvalidEntityException extends DudeException{
         super(message, args);
     }
 
-    public InvalidEntityException(String message, Throwable cause, String... args) {
-        super(message, cause, args);
-    }
-
 }
