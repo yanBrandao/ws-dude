@@ -14,8 +14,4 @@ public class AddressDTO {
     private String neighborhood;
     private String number;
     private CityDTO city;
-
-    public AddressDTO(Long id){
-        this.id = id;
-    }
 }

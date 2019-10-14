@@ -12,8 +12,4 @@ public class CityDTO {
     private Long id;
     private String name;
     private StateDTO state;
-
-    public CityDTO(Long id){
-        this.id = id;
-    }
 }
